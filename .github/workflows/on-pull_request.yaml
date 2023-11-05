@@ -10,6 +10,7 @@ jobs:
       - name: Print PR number
         run: echo "PR number is ${{ github.event.pull_request.number }}"
   run-tests:
+    if: github.event_name == 'pull_request' && github.event.action != 'closed'
     uses: ./.github/workflows/template-python-tox-test.yaml
   on_merge:
     if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
