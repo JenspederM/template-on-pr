@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup
-        uses: ./.github/actions/setup
+      - name: Setup Python
+        uses: ./.github/actions/setup-python
       - name: Run Test
         run: |
           source .venv/bin/activate
@@ -27,11 +27,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: ./.github/actions/setup-python
       - name: Print PR number
         run: echo "PR number ${{ github.event.pull_request.number }} is merged"
-      - name: Setup
-        uses: ./.github/actions/setup
       - name: Run build
         run: |
           source .venv/bin/activate
           poetry build
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: "Built ${{ github.event.pull_request.number }}"
+          add: dist/*
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
