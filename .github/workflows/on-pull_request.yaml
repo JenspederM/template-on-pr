@@ -7,12 +7,14 @@ jobs:
   print-pr:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Print PR number
         run: echo "PR number is ${{ github.event.pull_request.number }}"
   run-tests:
     if: github.event_name == 'pull_request' && github.event.action != 'closed'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Setup
         uses: ./.github/actions/setup.yaml
       - name: Run Test
@@ -24,6 +26,7 @@ jobs:
     needs: [print-pr]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Print PR number
         run: echo "PR number ${{ github.event.pull_request.number }} is merged"
       - name: Setup
