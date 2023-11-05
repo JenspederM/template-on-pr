@@ -35,9 +35,3 @@ jobs:
         run: |
           source .venv/bin/activate
           poetry build
-      - uses: EndBug/add-and-commit@v9
-        with:
-          message: "Built ${{ github.event.pull_request.number }}"
-          add: ./dist/*.whl
-          committer_name: GitHub Actions
-          committer_email: actions@github.com
