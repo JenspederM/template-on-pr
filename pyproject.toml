@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "template-on-pr"
+version = "0.1.0"
+description = ""
+authors = ["Jens Peder Meldgaard <jenspederm@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "template_on_pr", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[tool.poetry.group.dev.dependencies]
+tox = "^4.11.3"
+pytest = "^7.4.3"
+ruff = "^0.1.4"
+pytest-cov = "^4.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
