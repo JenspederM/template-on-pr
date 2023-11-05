@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup
-        uses: ./.github/actions/setup.yaml
+        uses: ./.github/actions/setup
       - name: Run Test
         run: |
           source .venv/bin/activate
@@ -30,7 +30,7 @@ jobs:
       - name: Print PR number
         run: echo "PR number ${{ github.event.pull_request.number }} is merged"
       - name: Setup
-        uses: ./.github/actions/setup.yaml
+        uses: ./.github/actions/setup
       - name: Run build
         run: |
           source .venv/bin/activate
